@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+{% extends "app/layout.html" %}
+{% block content %}
+{% if form != None %}
+
+<style>
+    /* Стили для формы */
+    form {
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    label {
+        display: block;
+        margin-top: 10px;
+    }
+
+    input[type="text"], input[type="email"], textarea, select {
+        width: 100%;
+        padding: 10px;
+        margin: 5px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        transition: background-color 0.3s ease; /* Плавное изменение фона */
+    }
+
+    input[type="submit"] {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: color 0.3s ease; /* Плавное изменение цвета текста */
+    }
+</style>
+
+<br>
+<h2>Отправьте, пожалуйста, заполненную анкету</h2>
+<br>
+<div>
+    <form method="post">
+        {% csrf_token %}
+        <label for="{{ form.name.id_for_label }}">{{ form.name.label }}:</label>
+        {{ form.name }}<br><br>
+        <label for="{{ form.city.id_for_label }}">{{ form.city.label }}:</label>
+        {{ form.city }}<br>
+        <label for="{{ form.gender.id_for_label }}">{{ form.gender.label }}:</label>
+        {{ form.gender }}
+        <label for="{{ form.job.id_for_label }}">{{ form.job.label }}:</label><br>
+        {{ form.job }}<br><br>
+        <label for="{{ form.internet.id_for_label }}">{{ form.internet.label }}:</label><br>
+        {{ form.internet }}<br><br>
+        <label for="{{ form.notice.id_for_label }}">{{ form.notice.label }}:</label>
+        {{ form.notice }}<br><br>
+        <label for="{{ form.email.id_for_label }}">{{ form.email.label }}:</label>
+        {{ form.email }}<br><br>
+        <label for="{{ form.message.id_for_label }}">{{ form.message.label }}:</label><br>
+        {{ form.message }}<br><br>
+        <input type="submit" id="submitButton" value="Отправить">
+    </form>
+</div>
+
+<script>
+    // JavaScript для динамических эффектов
+
+    // Элементы формы
+    const submitButton = document.getElementById('submitButton');
+    const inputs = document.querySelectorAll('input[type="text"], input[type="email"], textarea, select');
+
+    // Изменение цвета текста кнопки при наведении курсора
+    submitButton.addEventListener('mouseenter', () => {
+        submitButton.style.color = 'black'; // Жёлтый цвет текста
+    });
+
+    // Восстановление цвета текста кнопки при уходе курсора
+    submitButton.addEventListener('mouseleave', () => {
+        submitButton.style.color = 'white'; // Белый цвет текста
+    });
+
+    // Изменение цвета фона поля ввода при фокусе
+    inputs.forEach(input => {
+        input.addEventListener('focus', () => {
+            input.style.backgroundColor = '#e6f7ff'; // Голубой цвет фона
+        });
+
+        // Восстановление цвета фона при потере фокуса
+        input.addEventListener('blur', () => {
+            input.style.backgroundColor = 'white'; // Белый цвет фона
+        });
+    });
+</script>
+
+{% else %}
+<br>
+<h2>Благодарим за представленную информацию!</h2>
+<h3>Вы сообщили о себе следующее: </h3>
+<ul>
+    <li><span>Имя: </span>{{ data.name }}</li>
+    <li><span>Город: </span>{{ data.city }}</li>
+    <li><span>Пол: </span>{{ data.gender }}</li>
+    <li><span>Работа: </span>{{ data.job }}</li>
+    <li><span>В интернете: </span>{{ data.internet }}</li>
+    <li><span>Получать новости сайта на e-mail: </span>{{ data.notice }}</li>
+    <li><span>Ваш e-mail: </span>{{ data.email }}</li>
+    <li><span>Информация о себе: </span>{{ data.message }}</li>
+</ul>
+{% endif %}
+{% endblock %}

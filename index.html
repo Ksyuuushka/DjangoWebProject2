@@ -1,0 +1,74 @@
+﻿{% extends "app/layout.html" %}
+
+{% block content %}
+
+<div class="jumbotron">
+    <h1>Книжный Ковчег</h1>
+    <p class="lead">
+        Мы верим, что книги — это не только источник знаний, но и способ лучше понять себя и окружающий мир.
+        Наша цель — создать сообщество,где каждый найдёт свою книгу и поделится своими впечатлениями с другими.
+    </p>
+    <p><a href="https://www.djangoproject.com/" class="btn btn-primary btn-large">Узнать больше &raquo;</a></p>
+</div>
+
+
+{% load static %}
+<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="2000">
+    <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+        <li data-target="#myCarousel" data-slide-to="3"></li>
+    </ol>
+
+    <div class="carousel-inner" role="listbox">
+        <div class="item active">
+            <img src="{% static 'app/content/banner1.jpg' %}" alt="Первый слайд" class="img-responsive" />
+            <div class="carousel-caption" role="option">
+            </div>
+        </div>
+
+        <div class="item">
+            <img src="{% static 'app/content/banner2.png' %}" alt="Второй слайд" class="img-responsive" />
+            <div class="carousel-caption" role="option">
+
+            </div>
+        </div>
+
+        <div class="item">
+            <img src="{% static 'app/content/banner3.jpeg' %}" alt="Третий слайд" class="img-responsive" />
+            <div class="carousel-caption" role="option">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Рекомендации</h2>
+        <p>
+            Подборки книг на основе ваших предпочтений.
+            Мы предлагаем тематические списки, такие как "10 книг для вдохновения",
+            "Лучшие детективы 2023 года" или "Классика, которую должен прочитать каждый".
+        </p>
+        <p><a class="btn btn-default" href="https://djangobook.com/django-tutorials/">Узнать больше &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Рецензии и обзоры</h2>
+        <p>
+            Подробные рецензии от наших экспертов и пользователей сайта. Вы можете делиться своими впечатлениями о
+            прочитанном и обсуждать книги с другими читателями.
+        </p>
+        <p><a class="btn btn-default" href="https://pypi.org/">Узнать больше &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Книжный клуб</h2>
+        <p>Виртуальные встречи для обсуждения книг. Вы можете присоединиться к дискуссиям, задать вопросы автору или просто пообщаться с единомышленниками.</p>
+        <p><a class="btn btn-default" href="http://azure.microsoft.com">Узнать больше &raquo;</a></p>
+    </div>
+</div>
+
+{% endblock %}
