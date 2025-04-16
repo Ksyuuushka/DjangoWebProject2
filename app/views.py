@@ -9,6 +9,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.db import models
 from .models import Blog
 
+from .forms import BlogForm 
 from .models import Comment # использование модели комментариев
 from .forms import CommentForm # использование формы ввода комментария
 
