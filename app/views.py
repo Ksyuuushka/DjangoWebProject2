@@ -193,7 +193,7 @@ def newpost(request):
             'app/newpost.html',
             {
                 'blogform': blogform,
-                'title': 'Добавить статью слога',
+                'title': 'Добавить статью блога',
                 
                 'year': datetime.now().year,
             }
