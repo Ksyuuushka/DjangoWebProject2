@@ -183,22 +183,19 @@ def newpost(request):
             blog_f.posted = datetime.now()
             blog_f.autor = request.user
             blog_f.save()
-
             return redirect('blog')
-        else:
-            blogorm = BlogForm()
+    else:
+        blogform = BlogForm()  # Исправлено: было blogorm
 
-        return render(
-            request,
-            'app/newpost.html',
-            {
-                'blogform': blogform,
-                'title': 'Добавить статью блога',
-                
-                'year': datetime.now().year,
-            }
-            
-        )
+    return render(
+        request,
+        'app/newpost.html',
+        {
+            'blogform': blogform,
+            'title': 'Добавить статью блога',
+            'year': datetime.now().year,
+        }
+    )
 
 def videopost(request):
     """Renders the videopost page."""
